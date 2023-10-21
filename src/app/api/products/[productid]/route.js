@@ -21,3 +21,11 @@ export async function GET(request,content){
     return NextResponse.json({result,success:true});
 }
 
+export async function DELETE(request,{params}){
+    console.log(params.productid);
+    const productId = params.productid;
+    await mongoose.connect(connectionSrt);
+    const result = await Product.findByIdAndDelete(productId);
+    return NextResponse.json({result,success:true});
+}
+
